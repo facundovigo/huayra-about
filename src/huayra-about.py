@@ -47,19 +47,15 @@ window.set_title("Acerca de Huayra")
 window_icon = os.path.join(APP_PATH, 'media', 'huayra-menu-huayra.svg')
 window.set_icon_from_file(window_icon)
 
-width=600
-height=int(round(width*0.66))
-window.set_geometry_hints( window, width, height, width, height, width, height, 0, 0, 1.5 , 1.5 )
-window.set_position(gtk.WIN_POS_CENTER)
 window.connect("delete-event", on_window_delete_event )
 window.connect("destroy", on_window_destroy )
-window.set_border_width(width/30) # 20
 
-hbox = gtk.HBox(False,spacing=width/20)
+hbox = gtk.HBox(False)
 
 vbox = gtk.VBox(True,spacing=0)
 
 icon_theme = gtk.icon_theme_get_default()
+"""
 logo = gtk.Image()
 side = width/5*2/5
 wish_icon = "applications-huayra"
@@ -74,7 +70,7 @@ else:
 
 if 'pixbuf' in locals():
    logo.set_from_pixbuf(pixbuf)
-
+"""
 # cli
 info_version = gtk.Label() # Fake label to blow markup tags
 """
@@ -114,6 +110,13 @@ vbox.add(gtk.Label()) # void label
 vbox.add(hbox)
 hbox.add(info_table.info_table)
 hbox.add(bbox)
+
+width=600
+height=int(round(width*0.66))
+window.set_geometry_hints( window, width, height, width, height, width, height, 0, 0, 1.5 , 1.5 )
+window.set_position(gtk.WIN_POS_CENTER)
+
+#window.set_border_width(width/30) # 20
 
 window.set_focus(button_close)
 window.add(vbox)
