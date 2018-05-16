@@ -110,7 +110,7 @@ menu_item_copy.show()
 button_menu = gtk.Button()
 
 image = gtk.Image()
-image.set_from_file("media/compartir.svg")
+image.set_from_file(os.path.join(APP_PATH, 'media', 'compartir.svg'))
 button_menu.set_image(image)
 button_menu.props.relief = gtk.RELIEF_NONE
 
@@ -151,3 +151,5 @@ if __name__ == '__main__':
         gtk.main()
     if args.tty:
         print info_table.solo_texto()
+
+
