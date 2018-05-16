@@ -3,6 +3,8 @@
 # Copyright 2015 - Pedro Boliche <bolichep@gmail.com>
 # Copyright 2015 - Ignacio Juan Martín Benedetti <tranceway@gmail.com>
 # Copyleft 2015 - Diego Accorinti (mejoras memoria y modelo de cpu)
+# Copyleft 2018 - Diego Accorinti (cambio diseño Huayra 4 - agregado de información sobre particiones y repositorios al copiar datos para reporte.)
+
 # License: GPLv3 (see http://www.gnu.org/licenses/gpl.html)
 
 import rasti    # automatic plugin load
@@ -65,7 +67,7 @@ window_icon = os.path.join(APP_PATH, 'media', 'huayra-menu-huayra.svg')
 window.set_icon_from_file(window_icon)
 
 width = 600
-height = 420
+height = 430
 window.set_geometry_hints(window, width, height, width, height, width, height, 0, 0, 1.5, 1.5)
 window.set_position(gtk.WIN_POS_CENTER)
 window.connect("delete-event", on_window_delete_event)
@@ -94,18 +96,24 @@ if 'pixbuf' in locals():
 
 fixed = gtk.Fixed()
 
-button_close = gtk.Button(label=" Cerrar ")
-button_close.connect("clicked", on_close_clicked)
-button_close.connect_object("clicked", gtk.Widget.destroy, window)
-button_close.set_tooltip_text("Cerrar acerca de Huayra")
+#button_close = gtk.Button(label=" Cerrar ")
+#button_close.connect("clicked", on_close_clicked)
+#button_close.connect_object("clicked", gtk.Widget.destroy, window)
+#button_close.set_tooltip_text("Cerrar acerca de Huayra")
 
 menu = gtk.Menu()
-menu_item_copy = gtk.MenuItem("Copiar")
-menu_item_copy.set_tooltip_text("Copia al portapapeles")
+menu_item_copy = gtk.MenuItem("Copiar al portapapeles")
+menu_item_copy.set_tooltip_text("Copiar al portapapeles")
 menu.append(menu_item_copy)
 menu_item_copy.connect("activate", menu_item_copy_response, " Texto")
 menu_item_copy.show()
-button_menu = gtk.Button(label="  Más  ")
+button_menu = gtk.Button()
+
+image = gtk.Image()
+image.set_from_file("media/compartir.svg")
+button_menu.set_image(image)
+button_menu.props.relief = gtk.RELIEF_NONE
+
 button_menu.connect_object("event", button_press, menu)
 
 
@@ -122,12 +130,12 @@ vbox.connect('expose-event', draw_background)
 
 
 fixed.put(info_table.table, 0, 220)
-fixed.put(button_menu, 480, 280)
-fixed.put(button_close, 480, 330)
+fixed.put(button_menu, 490, 320)
+#fixed.put(button_close, 480, 330)
 
 vbox.add(fixed)
 
-window.set_focus(button_close)
+#window.set_focus(button_close)
 window.add(vbox)
 
 if __name__ == '__main__':

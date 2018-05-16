@@ -5,7 +5,7 @@
 import gtk
 
 # Table
-table = gtk.Table(6, 2, False)
+table = gtk.Table(6, 2, homogeneous=False)
 table.set_col_spacings(10)
 table.set_row_spacings(10)
 table_row = 0
@@ -34,8 +34,8 @@ def add_row_to_table(label_label, label_text, row, tooltip="", destino="all"):
         table_row += 1
 
     if destino == "all" or destino == "cli":
-        salida_cli += label_label + ': ' + label_text + '\n'
-
+		salida_cli += label_label + ': ' + label_text + '\n'
+		
 def solo_texto():
     info_version.set_markup(salida_cli)
     return info_version.get_text()
