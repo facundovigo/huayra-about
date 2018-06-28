@@ -52,4 +52,4 @@ if __name__ == '__main__':
 else:
     info_table.add_row_to_table(markup.label_set_markup(Info.label()), markup.text_set_markup(Info.text()), 2, "Arquitectura del sistema.")
 
-    #rint __name__
+    #rint __name
