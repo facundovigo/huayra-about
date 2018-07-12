@@ -66,6 +66,7 @@ window.set_title("Acerca de Huayra")
 window_icon = os.path.join(APP_PATH, 'media', 'huayra-menu-huayra.svg')
 window.set_icon_from_file(window_icon)
 
+
 width = 600
 height = 430
 window.set_geometry_hints(window, width, height, width, height, width, height, 0, 0, 1.5, 1.5)
@@ -73,6 +74,8 @@ window.set_position(gtk.WIN_POS_CENTER)
 window.connect("delete-event", on_window_delete_event)
 window.connect("destroy", on_window_destroy)
 window.set_border_width(width / 30)  # 20
+
+
 
 vbox = gtk.VBox(True, spacing=0)
 
@@ -115,7 +118,6 @@ button_menu.set_image(image)
 button_menu.props.relief = gtk.RELIEF_NONE
 
 button_menu.connect_object("event", button_press, menu)
-
 
 def draw_background(widget, event):
     try:
