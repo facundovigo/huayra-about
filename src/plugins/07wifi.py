@@ -9,14 +9,14 @@ import os.path
 import subprocess
 
 
-LABEL = u'Placas de Red'
+LABEL = "Placas de Red"
 
 
 class Info(object):
 
     @staticmethod
     def text():
-        cmd= ['./info_red.sh'] #cmd = ['df', '-h'] lspci | grep -i Network   | cut -c9-100
+        cmd= ['./info_red.sh']
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         out, err = process.communicate()
         info = out.strip()
@@ -27,10 +27,9 @@ class Info(object):
     def label():
         return LABEL
 
+
 if __name__ == '__main__':
-    #print Info.label()
-    #print Info.text()
-    null
+    print '{0}: {1}'.format(Info.label(), Info.text())
 
 else:
     info_table.add_row_to_table(markup.label_set_markup(Info.label()), markup.text_set_markup(Info.text()), 2, "Placas de Red")
